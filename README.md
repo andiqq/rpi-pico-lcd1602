@@ -1,12 +1,10 @@
-# rpi-pico-blink-sdk
+# rpi-pico-lcd1602
 
 This example demonstrates how to integrate with the Pico SDK which is using CMake as its build system -- the simplest way to integrate with it is to also use CMake to build a Swift firmware application on top of the SDK and the libraries from it.
 
-<img src="https://github.com/swiftlang/swift-embedded-examples/assets/1186214/f2c45c18-f9a4-48b4-a941-1298ecc942cb">
-
 ## Requirements
 
-- A Raspberry Pi Pico (non-W) board. If you have a Pico W instead, refer to the [rpi-picow-blink-sdk](../rpi-picow-blink-sdk) sample instead.
+- A Raspberry Pi Pico board.
 - Follow the setup steps at https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf, in particular you'll need:
   - A checkout of the [pico-sdk](https://github.com/raspberrypi/pico-sdk.git), with git submodules checked out. If you'd like to try RISC-V support for RP2350, you'll need Pico SDK 2.1.0 or later.
   - A checkout of the [pico-examples](https://github.com/raspberrypi/pico-examples.git).
@@ -22,7 +20,7 @@ This example demonstrates how to integrate with the Pico SDK which is using CMak
 - Build and copy the program in the UF2 format to the Mass Storage device to trigger flashing the program into memory (after which the device will reboot and run the firmware):
 
 ``` console
-$ cd rpi-pico-blink-sdk
+$ cd rpi-pico-lcd1602
 $ export PICO_BOARD='<board-name>' # Examples: pico, pico2
 $ export PICO_PLATFORM='<optional-platform-name>' # Optional; useful if you'd like to compile for RISC-V. Examples: rp2040, rp2350-arm-s, rp2350-riscv 
 $ export PICO_SDK_PATH='<path-to-your-pico-sdk>'
@@ -37,7 +35,7 @@ $ cmake --build build
 - Copy the UF2 firmware to the Mass Storage device:
 
 ```console
-$ cp build/swift-blinky.uf2 /Volumes/RP2040
+$ cp build/swift-lcd1602.uf2 /Volumes/RP2040
 ```
 
 - The green LED should now be blinking in a pattern.
