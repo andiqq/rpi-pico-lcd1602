@@ -66,14 +66,14 @@ public struct LCD1602 {
         sendByte(value: value, mode: command)
     }
 
-    func lcd_char(_ val: UInt8) {
+    func writeChar(_ val: UInt8) {
     sendByte(value: val, mode: character)
 }
 
-func lcd_string(_ string: StaticString) {
+func writeStaticString(_ string: StaticString) {
     for i in 0..<string.utf8CodeUnitCount {
         let byte = string.utf8Start[i]
-        lcd_char(byte)
+        writeChar(byte)
     }
 }
 
