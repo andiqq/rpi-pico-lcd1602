@@ -68,14 +68,20 @@ public struct LCD1602 {
 
     func writeChar(_ val: UInt8) {
     sendByte(value: val, mode: character)
-}
-
-func writeStaticString(_ string: StaticString) {
-    for i in 0..<string.utf8CodeUnitCount {
-        let byte = string.utf8Start[i]
-        writeChar(byte)
     }
-}
+
+    func writeStaticString(_ string: StaticString) {
+        for i in 0..<string.utf8CodeUnitCount {
+            let byte = string.utf8Start[i]
+            writeChar(byte)
+        }
+    }
+
+    func writeString(_ string: () -> String) {
+        for ch in string().utf8 {
+            writeChar(ch)
+        }
+    }
 
     init() {
         
